@@ -44,7 +44,7 @@ export default function Home({ posts }) {
       </Head>
 
       <main>
-        <h1 className="text-2xl font-bold text-center">
+        <h1 className="my-2 text-2xl font-bold text-center">
           Monitored Products
         </h1>
 
