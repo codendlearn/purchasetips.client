@@ -1,5 +1,5 @@
 import React from 'react'
-import { IProduct } from '../pages/models/Post'
+import { IProduct } from '../models/Post'
 import AddProduct from './AddProduct'
 
 const PostList = ({ posts, onAdd }: { posts: IProduct[], onAdd: (post: IProduct) => void }) => {

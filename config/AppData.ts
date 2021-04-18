@@ -1,4 +1,4 @@
-import { IProduct } from "../pages/models/Post";
+import { IProduct } from "../models/Post";
 
 const posts: IProduct[] = [
     {

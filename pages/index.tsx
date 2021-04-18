@@ -4,8 +4,7 @@ import AddProduct from '../components/AddProduct';
 import Footer from '../components/Footer';
 import PostList from '../components/PostList';
 import { ApiConstants } from '../config/AppConstants';
-import posts from '../config/AppData'
-import { IProduct } from './models/Post';
+import { IProduct } from '../models/Post';
 
 export async function getStaticProps() {
   const res = await fetch(`${ApiConstants.BasePath}${ApiConstants.AllProducts}`)
