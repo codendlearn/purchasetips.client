@@ -22,6 +22,7 @@ const AddProduct = (props) => {
             <label>Add Product</label>
             <div className="w-full space-y-2 ">
                 <input
+                    autoFocus
                     className="w-full p-2 border-black rounded ring-1"
                     id="productUrl"
                     name="productUrl"
@@ -60,7 +61,7 @@ const AddProduct = (props) => {
                     className="w-full p-2 transform rounded ring-1 hover:bg-blue-400 hover:text-white focus:scale-95"
                     type="button"
                 >
-                    Track
+                    Track product
                 </button>
             </div>
         </form>

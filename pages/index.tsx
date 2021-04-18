@@ -49,10 +49,33 @@ export default function Home({ posts }) {
         </h1>
 
         <PostList onAdd={addPost} posts={state} />
-
       </main>
+      <section className="p-4 mt-5 border rounded-xl">
+        <h4 className="my-5 text-lg underline">How this works?</h4>
+        <p>
+          This app lets you add the amazon listed products you wish to track for price changes.
+          <ul className="px-6 list-disc">
+            <li className="list-item ">Add the product you wish to track</li>
+            <li className="list-item ">This app will check Amazon every 5 minutes for changes in price, and history is displayed in card at the bottom </li>
+            <li className="list-item ">ToDo: Sends email if price is reduced</li>
+            <li className="list-item ">ToDo: Login for each user (at this point its all one list for everyone)</li>
+          </ul>
+        </p>
+      </section>
+      <section className="p-4 mt-5 border rounded-xl">
+        <h4 className="my-5 text-lg underline">Made with</h4>
+        <ul className="px-6 list-disc">
+          <li className="list-item "><a href="https://github.com/codendlearn/purchasetips.client">Github</a> - code repo</li>
+          <li className="list-item ">Nextjs - Static Site Generation</li>
+          <li className="list-item ">Azure Functions - Serverless Archicture for apis and scrape job</li>
+          <li className="list-item ">Azure Cosmosdb - NoSql database</li>
+          <li className="list-item ">Tailwind css</li>
+          <li className="list-item ">Typescript</li>
+          <li className="list-item ">Vercel - hosting platform</li>
+        </ul>
 
-      <Footer />
+      </section>
+      {/* <Footer /> */}
     </div>
   )
 }
