@@ -1,14 +1,14 @@
 import React from 'react'
-import { IPost } from '../pages/models/Post'
+import { IProduct } from '../pages/models/Post'
 import AddProduct from './AddProduct'
 
-const PostList = ({ posts }: { posts: IPost[] }) => {
+const PostList = ({ posts, onAdd }: { posts: IProduct[], onAdd: (post: IProduct) => void }) => {
     return (
         <div className="flex flex-wrap m-2">
             {posts.map((p, index) => {
                 if (index == 0) {
                     return <div className="p-2 m-1 overflow-hidden border rounded shadow-sm max-h-64 w-44 hover:shadow-lg">
-                        <AddProduct />
+                        <AddProduct onAdd={onAdd} />
                     </div>
                 }
                 else
