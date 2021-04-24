@@ -9,7 +9,6 @@ const AddProduct = (props) => {
             isActive: true,
             maxPrice: 0,
             minPrice: 0,
-            price: 0,
             title: "",
             id: "",
             url: "",
@@ -46,14 +45,14 @@ const AddProduct = (props) => {
                 />
                 <input
                     className="w-full p-2 border-black rounded ring-1"
-                    id="productPrice"
-                    name="productPrice"
+                    id="productTriggerPrice"
+                    name="productTriggerPrice"
                     type="text"
                     value={product.price}
                     onChange={(e) => {
                         setproduct({ ...product, price: Number(e.target.value ?? "0") })
                     }}
-                    placeholder="enter product price"
+                    placeholder="enter alert trigger price"
                 />
                 <button onClick={(e) => {
                     props.onAdd(product)

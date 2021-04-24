@@ -28,7 +28,7 @@ export default function Home({ posts }) {
 
     const res = await fetch(`${ApiConstants.BasePath}${ApiConstants.AddProduct}`, {
       method: "POST",
-      body: JSON.stringify([{ Title: post.title, Url: post.url, category: "Electronics", Price: post.price }]),
+      body: JSON.stringify([{ Title: post.title, Url: post.url, category: post.category, Price: post.price }]),
       headers: {
         "Content-type": "application/json; charset=UTF-8"
       },

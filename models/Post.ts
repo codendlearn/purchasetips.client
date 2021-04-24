@@ -6,7 +6,7 @@ export interface IProduct {
     isActive: boolean
     maxPrice: number
     minPrice: number
-    price: number
+    price?: number
     title: string
     url: string
 }
