@@ -37,7 +37,7 @@ export default function Home({ posts }) {
   }
 
   return (
-    <div className="container block w-screen min-h-screen m-auto ">
+    <div className="container block w-screen min-h-screen m-auto">
       <Head>
         <title>Purchase Tips</title>5
         <link rel="icon" href="/favicon.ico" />

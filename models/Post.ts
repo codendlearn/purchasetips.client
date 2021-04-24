@@ -1,7 +1,7 @@
 export interface IProduct {
     addedOn: string
     category?: string
-    history: number[]
+    history: IProductHistory[]
     id: string
     isActive: boolean
     maxPrice: number
@@ -9,4 +9,12 @@ export interface IProduct {
     price?: number
     title: string
     url: string
+}
+
+export interface IProductHistory {
+    url?: string,
+    currentprice: number
+    previousprice: number
+    notified?: boolean
+    updatedOn?: Date
 }
