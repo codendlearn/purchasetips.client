@@ -12,7 +12,6 @@ const PostList = ({ posts, onAdd }: { posts: IProduct[], onAdd: (post: IProduct)
                 <AddProduct onAdd={onAdd} />
             </div>
             {posts.map((p, index) => {
-
                 const isRed = p.history.length > 0 && p.history[p.history.length - 1].previousprice < p.price;
                 const isGreen = p.history.length > 0 && p.history[p.history.length - 1].previousprice > p.price;
                 return <Link href={{

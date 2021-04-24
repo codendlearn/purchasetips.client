@@ -22,7 +22,7 @@ export async function getStaticProps({ params }) {
         let product = productsobj.find((a) =>
             a.url == params.slug
         )
-
+        product.history == product.history ?? []
         return {
             props: {
                 product
