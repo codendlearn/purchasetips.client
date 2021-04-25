@@ -1,13 +1,13 @@
 import React from 'react'
-import { useRouter } from 'next/router'
-import { IProduct } from '../../models/Post'
 import clsx from 'clsx'
+import { useRouter } from 'next/router'
+
+import { IProduct } from '../../models/Product'
 
 export async function getStaticPaths({ params }) {
     let products = await fetch('https://purchasetips.azurewebsites.net/api/allproducts')
     let productsobj: IProduct[] = await products.json()
     let productParams = productsobj.map(p => { return { params: { slug: p.url } } })
-    console.log(productParams)
     return {
         paths: productParams,
         fallback: true
@@ -17,17 +17,16 @@ export async function getStaticPaths({ params }) {
 export async function getStaticProps({ params }) {
     let products = await fetch('https://purchasetips.azurewebsites.net/api/allproducts')
     let productsobj: IProduct[] = await products.json()
+
     if (productsobj) {
-        console.log(productsobj)
-        let product = productsobj.find((a) =>
-            a.url == params.slug
-        )
+        let product = productsobj.find((a) => a.url == params.slug)
         product.history == product.history ?? []
+
         return {
             props: {
                 product
             },
-            revalidate: 300 // will be passed to the page component as props
+            revalidate: 300
         }
     }
 }
@@ -43,7 +42,7 @@ const ProductDetail = ({ product }: { product: IProduct }) => {
             <p>Min observed price: {product.minPrice}</p>
             <section className="p-4">
                 <p>Previous changes</p>
-                {product.history.map(h => <p>{h.previousprice} ---- {h.currentprice} </p>)}
+                {product.history.map((h, index) => <p key={index}>{h.previousprice} ---- {h.currentprice} </p>)}
             </section>
         </div>
     )

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IProduct } from "../models/Post";
+import { IProduct } from "../models/Product";
 
 const AddProduct = (props) => {
     const [product, setproduct] = useState<IProduct>(

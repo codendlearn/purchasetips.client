@@ -1,5 +1,12 @@
 {
     "editor.defaultFormatter": "vscode.typescript-language-features",
     "editor.formatOnSave": true,
-    "tailwindCSS.emmetCompletions": true
+    "tailwindCSS.emmetCompletions": true,
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#28c048",
+        "statusBar.foreground": "#15202b",
+        "statusBarItem.hoverBackground": "#1f9638",
+        "tab.activeBorder": "#43d862"
+    },
+    "peacock.color": "#28c048"
 }
