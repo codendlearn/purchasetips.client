@@ -33,8 +33,9 @@ export async function getStaticProps({ params }) {
 
 
 const ProductDetail = ({ product }: { product: IProduct }) => {
-    return (
-        <div className={clsx('container border border-red-800 p-4 shadow-md max-w-screen-md mx-auto my-4 h-full')}>
+
+    if (product)
+        return <div className={clsx('container border border-red-800 p-4 shadow-md max-w-screen-md mx-auto my-4 h-full')}>
             <a className="underline" href={product.url}>{product.title}</a>
             <span>{product.category}</span>
             <p>Current Price: {product.price}</p>
@@ -45,7 +46,7 @@ const ProductDetail = ({ product }: { product: IProduct }) => {
                 {product.history.map((h, index) => <p key={index}>{h.previousprice} ---- {h.currentprice} </p>)}
             </section>
         </div>
-    )
+    else return <div>Error...</div>
 }
 
 export default ProductDetail
