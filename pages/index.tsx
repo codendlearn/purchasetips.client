@@ -4,7 +4,7 @@ import AddProduct from '../components/AddProduct';
 import Footer from '../components/Footer';
 import PostList from '../components/PostList';
 import { ApiConstants } from '../config/AppConstants';
-import { IProduct } from '../models/Post';
+import { IProduct } from '../models/Product';
 
 export async function getStaticProps() {
   const res = await fetch(`${ApiConstants.BasePath}${ApiConstants.AllProducts}`)
@@ -48,11 +48,11 @@ export default function Home({ posts }) {
           Monitored Products
         </h1>
 
-        <PostList onAdd={addPost} posts={state} />
+        <PostList onAdd={addPost} products={state} />
       </main>
       <section className="p-4 mt-5 border rounded-xl">
         <h4 className="my-5 text-lg underline">How this works?</h4>
-        <p>
+        <div>
           This app lets you add the amazon listed products you wish to track for price changes.
           <ul className="px-6 list-disc">
             <li className="list-item ">Add the product you wish to track</li>
@@ -60,8 +60,9 @@ export default function Home({ posts }) {
             <li className="list-item ">ToDo: Sends email if price is reduced</li>
             <li className="list-item ">ToDo: Login for each user (at this point its all one list for everyone)</li>
           </ul>
-        </p>
+        </div>
       </section>
+
       <section className="p-4 mt-5 border rounded-xl">
         <h4 className="my-5 text-lg underline">Made with</h4>
         <ul className="px-6 list-disc">
