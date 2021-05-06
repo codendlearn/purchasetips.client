@@ -23,7 +23,7 @@ const PostList = ({ posts, onAdd }: { posts: IProduct[], onAdd: (post: IProduct)
                         <div className="relative h-full">
                             <h3 className="text" >{p.title.length < 120 ? p.title : p.title.slice(0, 120).concat("...")}</h3>
                             <p className={clsx("text-lg", isGreen && 'text-green-400', isRed && "text-red-400")}>Current Price: {p.price}</p>
-                            <p className={clsx("absolute bottom-0", p.history.length == 0 && "hidden")}> Previous price: {p.history.slice(-1)[0].previousprice}</p>
+                            {p.history.length > 0 && <p className={clsx("absolute bottom-0", p.history.length == 0 && "hidden")}> Previous price: {p.history.slice(-1)[0].previousprice}</p>}
                         </div>
                     </a>
                 </Link>

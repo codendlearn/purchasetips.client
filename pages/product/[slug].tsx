@@ -17,12 +17,11 @@ export async function getStaticPaths({ params }) {
 export async function getStaticProps({ params }) {
     let products = await fetch('https://purchasetips.azurewebsites.net/api/allproducts')
     let productsobj: IProduct[] = await products.json()
+    console.log(productsobj)
     if (productsobj) {
-        console.log(productsobj)
-        let product = productsobj.find((a) =>
-            a.url == params.slug
-        )
+        let product = productsobj.find((a) => a.url == params.slug)
         product.history == product.history ?? []
+
         return {
             props: {
                 product
@@ -30,10 +29,18 @@ export async function getStaticProps({ params }) {
             revalidate: 300 // will be passed to the page component as props
         }
     }
+    else {
+        return {
+            notFound: true
+        }
+    }
 }
 
+type Props = { product: IProduct }
 
-const ProductDetail = ({ product }: { product: IProduct }) => {
+const ProductDetail = ({ product }: Props) => {
+    console.log(product)
+
     return (
         <div className={clsx('container border border-red-800 p-4 shadow-md max-w-screen-md mx-auto my-4 h-full')}>
             <a className="underline" href={product.url}>{product.title}</a>
