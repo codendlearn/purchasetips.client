@@ -1,8 +1,7 @@
 import React from 'react'
 import clsx from 'clsx'
-import { useRouter } from 'next/router'
 
-import { IProduct } from '../../models/Product'
+import { IProduct } from '../../../models/Product'
 
 export async function getStaticPaths({ params }) {
     let products = await fetch('https://purchasetips.azurewebsites.net/api/allproducts')

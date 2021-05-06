@@ -21,11 +21,10 @@ export async function getStaticProps() {
 export default function Home({ posts }) {
 
   const [state, setstate] = useState<IProduct[]>(posts)
-
+  const [apiInProgress, setapiInProgress] = useState(false)
   const addPost = async (post: IProduct) => {
-    post.history = []
-    setstate([...state, post])
 
+    setapiInProgress(true)
     const res = await fetch(`${ApiConstants.BasePath}${ApiConstants.AddProduct}`, {
       method: "POST",
       body: JSON.stringify([{ Title: post.title, Url: post.url, category: post.category, Price: post.price }]),
@@ -34,6 +33,10 @@ export default function Home({ posts }) {
       },
       mode: "no-cors",
     })
+    setapiInProgress(false)
+
+    post.history = []
+    setstate([...state, post])
   }
 
   return (
@@ -48,7 +51,7 @@ export default function Home({ posts }) {
           Monitored Products
         </h1>
 
-        <PostList onAdd={addPost} products={state} />
+        <PostList onAdd={addPost} products={state} apiInProgress={apiInProgress} />
       </main>
       <section className="p-4 mt-5 border rounded-xl">
         <h4 className="my-5 text-lg underline">How this works?</h4>

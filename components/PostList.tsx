@@ -4,11 +4,11 @@ import AddProduct from './AddProduct'
 import clsx from 'clsx'
 import Link from 'next/link'
 
-const PostList = ({ products: products, onAdd }: { products: IProduct[], onAdd: (product: IProduct) => void }) => {
+const PostList = ({ products: products, onAdd, apiInProgress }: { products: IProduct[], onAdd: (product: IProduct) => void, apiInProgress: boolean }) => {
     return (
         <div className="flex flex-wrap p-6 mt-5 border rounded-xl">
             <div className="p-2 m-1 overflow-hidden border rounded shadow-sm bg-gray-50 hover:bg-blue-50 w-72 hover:shadow-lg">
-                <AddProduct onAdd={onAdd} />
+                <AddProduct apiInProgress={apiInProgress} onAdd={onAdd} />
             </div>
             {products.map((p, index) => {
                 const isRed = p.history.length > 0 && p.history[p.history.length - 1].previousprice < p.price;

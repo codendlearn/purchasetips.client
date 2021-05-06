@@ -1,7 +1,9 @@
+import clsx from "clsx";
 import React, { useState } from "react";
 import { IProduct } from "../models/Product";
 
 const AddProduct = (props) => {
+    const [error, setError] = useState(false)
     const [product, setproduct] = useState<IProduct>(
         {
             addedOn: "",
@@ -16,9 +18,11 @@ const AddProduct = (props) => {
         }
     )
 
+    const errorMessage = "Invalid data";
+
     return (
         <form className="flex flex-col items-center justify-between h-full">
-            <label>Add Product</label>
+            <label>{props.apiInProgress ? "Adding product..." : "Add Product"}</label>
             <div className="w-full space-y-2 ">
                 <input
                     autoFocus
@@ -54,11 +58,22 @@ const AddProduct = (props) => {
                     }}
                     placeholder="enter alert trigger price"
                 />
+
+                {
+                    error && <label className={clsx('text-red-500')}>{errorMessage}</label>
+                }
+
                 <button onClick={(e) => {
-                    props.onAdd(product)
+                    if (product.url && (product.price ?? 1) > 0) {
+                        setError(false)
+                        props.onAdd(product)
+                    }
+                    else
+                        setError(true)
                 }}
                     className="w-full p-2 transform rounded ring-1 hover:bg-blue-400 hover:text-white focus:scale-95"
                     type="button"
+                    disabled={props.apiInProgress}
                 >
                     Track product
                 </button>
