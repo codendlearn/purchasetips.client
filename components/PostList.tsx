@@ -7,7 +7,7 @@ import ProductCard from './ProductCard'
 
 const PostList = ({ products: products, onAdd, apiInProgress }: { products: IProduct[], onAdd: (product: IProduct) => void, apiInProgress: boolean }) => {
     return (
-        <div className="flex flex-wrap p-6 mt-5 border rounded-xl">
+        <div className="flex flex-wrap mt-5">
             <div className="p-2 m-1 overflow-hidden border rounded shadow-sm bg-gray-50 hover:bg-blue-50 w-72 hover:shadow-lg">
                 <AddProduct apiInProgress={apiInProgress} onAdd={onAdd} />
             </div>

@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import PostList from '../components/PostList'
 import { ApiConstants } from '../config/AppConstants'
 import { IProduct } from '../models/Product'
+import Layout from './Layout'
+import ProductDetail from './product/detail/[slug]'
 
 export async function getStaticProps() {
   const res = await fetch(`${ApiConstants.BasePath}${ApiConstants.AllProducts}`)
@@ -40,14 +42,17 @@ export default function Home({ posts }) {
   }
 
   return (
-    <div className="container block w-screen min-h-screen m-auto">
-      <main>
-        <h1 className="my-2 text-2xl font-bold text-center">
-          Monitored Products - {state.length}
-        </h1>
+    <div className="container block min-w-full w-screen">
+      <Layout title={`Monitored Products - ${state.length}`}>
+        <main>
+          <PostList onAdd={addPost} products={state} apiInProgress={apiInProgress} />
+        </main>
+        <footer>
 
-        <PostList onAdd={addPost} products={state} apiInProgress={apiInProgress} />
-      </main>
+        </footer>
+      </Layout>
+
+
       <section className="p-4 mt-5 border rounded-xl">
         <h4 className="my-5 text-lg underline">How this works?</h4>
         <div>
@@ -75,7 +80,7 @@ export default function Home({ posts }) {
 
       </section>
       {/* <Footer /> */}
-    </div>
+    </div >
   )
 }
 

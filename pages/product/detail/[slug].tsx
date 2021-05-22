@@ -57,7 +57,7 @@ const ProductDetail = ({ product }: { product: IProduct }) => {
             <section className="mt-6">
                 <div className="flow-root">
                     <ul className="-mb-8">
-                        {product.history.map((event, eventIdx) => {
+                        {product.history.sort((a, b) => b - a).map((event, eventIdx) => {
 
                             const isRed = event.previousprice < event.currentprice
                             // const isGreen = event.previousprice > event.currentprice
