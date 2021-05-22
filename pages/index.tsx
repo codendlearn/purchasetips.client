@@ -1,21 +1,24 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import PostList from '../components/PostList'
-import {ApiConstants} from '../config/AppConstants'
-import {IProduct} from '../models/Product'
+import { ApiConstants } from '../config/AppConstants'
+import { IProduct } from '../models/Product'
 
 export async function getStaticProps() {
   const res = await fetch(`${ApiConstants.BasePath}${ApiConstants.AllProducts}`)
+
+  if (!res.ok)
+    return;
+
   const posts: IProduct[] = await res.json()
 
   return {
     props: {
       posts
-    },
-    revalidate: 5,
+    }
   }
 }
 
-export default function Home({posts}) {
+export default function Home({ posts }) {
 
   const [state, setstate] = useState<IProduct[]>(posts)
   const [apiInProgress, setapiInProgress] = useState(false)
@@ -24,7 +27,7 @@ export default function Home({posts}) {
     setapiInProgress(true)
     const res = await fetch(`${ApiConstants.BasePath}${ApiConstants.AddProduct}`, {
       method: "POST",
-      body: JSON.stringify([{Title: post.title, Url: post.url, category: post.category, Price: post.price}]),
+      body: JSON.stringify([{ Title: post.title, Url: post.url, category: post.category, Price: post.price }]),
       headers: {
         "Content-type": "application/json; charset=UTF-8"
       },
@@ -40,7 +43,7 @@ export default function Home({posts}) {
     <div className="container block w-screen min-h-screen m-auto">
       <main>
         <h1 className="my-2 text-2xl font-bold text-center">
-          Monitored Products
+          Monitored Products - {state.length}
         </h1>
 
         <PostList onAdd={addPost} products={state} apiInProgress={apiInProgress} />
@@ -61,7 +64,7 @@ export default function Home({posts}) {
       <section className="p-4 mt-5 border rounded-xl">
         <h4 className="my-5 text-lg underline">Made with</h4>
         <ul className="px-6 list-disc">
-          <li className="list-item "><a href="https://github.com/codendlearn/purchasetips.client">Github</a> - code repo</li>
+          <li className="list-item "><a href="https://github.com/codendlearn/purchasetips.client" className="underline">Github</a> - code repo</li>
           <li className="list-item ">Nextjs - Static Site Generation</li>
           <li className="list-item ">Azure Functions - Serverless Archicture for apis and scrape job</li>
           <li className="list-item ">Azure Cosmosdb - NoSql database</li>

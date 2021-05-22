@@ -3,17 +3,17 @@
     "editor.formatOnSave": true,
     "tailwindCSS.emmetCompletions": true,
     "workbench.colorCustomizations": {
-        "tab.activeBorder": "#fee3aa",
-        "activityBar.activeBackground": "#fee3aa",
-        "activityBar.activeBorder": "#029e6b",
-        "activityBar.background": "#fee3aa",
-        "activityBar.foreground": "#15202b",
-        "activityBar.inactiveForeground": "#15202b99",
-        "activityBarBadge.background": "#029e6b",
-        "activityBarBadge.foreground": "#e7e7e7",
         "editorGroup.border": "#fee3aa",
         "panel.border": "#fee3aa",
-        "sideBar.border": "#fee3aa"
+        "sideBar.border": "#fee3aa",
+        "tab.activeBorder": "#fee3aa",
+        "statusBar.background": "#fed277",
+        "statusBar.border": "#fed277",
+        "statusBar.debuggingBackground": "#77a3fe",
+        "statusBar.debuggingBorder": "#77a3fe",
+        "statusBar.debuggingForeground": "#15202b",
+        "statusBar.foreground": "#15202b",
+        "statusBarItem.hoverBackground": "#fec144"
     },
     "peacock.color": "#fed277",
     "debug.node.autoAttach": "on"

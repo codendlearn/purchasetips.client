@@ -3,6 +3,7 @@ export interface IProduct {
     category?: string
     history: IProductHistory[]
     id: string
+    imageUrl?: string
     isActive: boolean
     maxPrice: number
     minPrice: number
